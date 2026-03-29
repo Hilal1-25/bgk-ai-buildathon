@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TunaMentoora.ai — Kariyer Yolculuğuna Başla</title>
+    <meta
+      name="description"
+      content="Yapay zeka destekli kariyer rehberliği. Lise veya üniversite öğrencisi olarak kişisel rotanı keşfet."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="min-h-dvh font-sans antialiased text-slate-100 selection:bg-violet-500/40 selection:text-white"
+  >
+    <div
+      class="fixed inset-0 -z-10 bg-gradient-to-br from-slate-950 via-blue-950 to-violet-950"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.35),transparent)]"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_100%_100%,rgba(124,58,237,0.25),transparent)]"
+      aria-hidden="true"
+    ></div>
+
+    <main
+      id="main-root"
+      class="flex min-h-dvh flex-col items-center justify-center px-5 py-12 sm:px-8"
+    >
+      <div
+        id="app-shell"
+        class="w-full max-w-md transition-[max-width] duration-500 ease-out sm:max-w-lg"
+      >
+        <div class="flex justify-end">
+          <button
+            type="button"
+            id="btn-why-open"
+            class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs font-medium text-slate-200 transition hover:border-blue-300/50 hover:bg-white/[0.1] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+            aria-haspopup="dialog"
+            aria-controls="why-modal"
+          >
+            <span class="flex h-5 w-5 items-center justify-center rounded-full border border-blue-300/40 text-[11px] font-bold text-blue-200">i</span>
+            Neden Biz?
+          </button>
+        </div>
+        <header id="site-header" class="text-center transition-opacity duration-300">
+          <p
+            class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300/90"
+          >
+            Yapay zeka destekli rehberlik
+          </p>
+          <h1 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            TunaMentoora.ai
+          </h1>
+          <p
+            id="hero-desc"
+            class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-slate-300/95 sm:text-base"
+          >
+            Sana uygun kariyer rotasını keşfetmek için önce rolünü seç. Deneyimini
+            kişiselleştireceğiz.
+          </p>
+        </header>
+
+        <!-- Giriş: rol seçimi -->
+        <div
+          id="entry-section"
+          class="transition-all duration-500 ease-out"
+        >
+          <div
+            class="mt-10 space-y-4 rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-blue-950/50 backdrop-blur-xl sm:mt-12 sm:p-8"
+          >
+            <p class="text-sm font-medium text-slate-200">Sen kimsin?</p>
+            <div class="flex flex-col gap-4">
+              <button
+                type="button"
+                id="btn-lise"
+                class="group relative w-full overflow-hidden rounded-2xl border border-blue-400/25 bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-5 text-center text-lg font-semibold text-white shadow-lg shadow-blue-900/40 transition duration-200 hover:border-blue-300/50 hover:from-blue-500 hover:to-blue-600 hover:shadow-blue-800/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 active:scale-[0.98] sm:py-6 sm:text-xl"
+              >
+                <span class="relative z-10">Lise Öğrencisiyim</span>
+                <span
+                  class="absolute inset-0 -z-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 transition duration-300 group-hover:opacity-100"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                id="btn-universite"
+                class="group relative w-full overflow-hidden rounded-2xl border border-violet-400/30 bg-gradient-to-r from-violet-600 to-indigo-700 px-6 py-5 text-center text-lg font-semibold text-white shadow-lg shadow-violet-950/45 transition duration-200 hover:border-violet-300/50 hover:from-violet-500 hover:to-indigo-600 hover:shadow-violet-900/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 active:scale-[0.98] sm:py-6 sm:text-xl"
+              >
+                <span class="relative z-10">Üniversite Öğrencisiyim</span>
+                <span
+                  class="absolute inset-0 -z-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 transition duration-300 group-hover:opacity-100"
+                  aria-hidden="true"
+                ></span>
+              </button>
+            </div>
+          </div>
+
+          <p id="footer-trust" class="mt-8 text-center text-xs text-slate-500">
+            Verilerin yalnızca analiz için kullanılır; güvenli ve şeffaf bir deneyim sunuyoruz.
+          </p>
+        </div>
+
+        <!-- A. Lise formu (PRD: Gelecek Tasarımı) -->
+        <section
+          id="form-lise"
+          class="hidden opacity-0 translate-y-8 transition-all duration-500 ease-out"
+          aria-hidden="true"
+        >
+          <div
+            class="mt-8 rounded-3xl border border-blue-400/20 bg-white/[0.06] p-6 shadow-2xl shadow-blue-950/40 backdrop-blur-xl sm:p-8"
+          >
+            <p
+              class="mb-6 border-b border-white/10 pb-4 text-sm font-semibold text-blue-200"
+            >
+              Lise öğrencisi — gelecek tasarımı
+            </p>
+            <form id="lise-form" class="space-y-8">
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  Akademik alan
+                </legend>
+                <p class="text-xs text-slate-400">
+                  Mevcut veya hedeflenen alan (Sayısal, Sözel, EA, Dil).
+                </p>
+                <select
+                  name="akademik_alan"
+                  required
+                  class="field-select"
+                >
+                  <option value="">Alan seçin</option>
+                  <option value="sayisal">Sayısal</option>
+                  <option value="sozel">Sözel</option>
+                  <option value="ea">Eşit Ağırlık (EA)</option>
+                  <option value="dil">Dil</option>
+                </select>
+              </fieldset>
+
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  Güçlü yön analizi
+                </legend>
+                <p class="text-xs text-slate-400">
+                  Hangi yönünü daha baskın / güçlü buluyorsun? (Analitik düşünme,
+                  yaratıcılık, sosyal iletişim vb.) Birden fazla seçebilirsin.
+                </p>
+                <div class="grid gap-3 sm:grid-cols-2">
+                  <label class="radio-card rounded-xl border border-blue-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-blue-400/50 has-[:checked]:bg-blue-500/15">
+                    <input type="checkbox" name="guculu_yon" value="analitik_dusunme" class="radio-input" />
+                    <span>Analitik düşünme</span>
+                  </label>
+                  <label class="radio-card rounded-xl border border-blue-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-blue-400/50 has-[:checked]:bg-blue-500/15">
+                    <input type="checkbox" name="guculu_yon" value="yaraticilik" class="radio-input" />
+                    <span>Yaratıcılık</span>
+                  </label>
+                  <label class="radio-card rounded-xl border border-blue-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-blue-400/50 has-[:checked]:bg-blue-500/15">
+                    <input type="checkbox" name="guculu_yon" value="sosyal_iletisim" class="radio-input" />
+                    <span>Sosyal iletişim</span>
+                  </label>
+                  <label class="radio-card rounded-xl border border-blue-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-blue-400/50 has-[:checked]:bg-blue-500/15">
+                    <input type="checkbox" name="guculu_yon" value="diger" class="radio-input" />
+                    <span>Diğer</span>
+                  </label>
+                </div>
+                <div
+                  id="lise-guculu-diger-wrap"
+                  class="guculu-diger-panel"
+                  aria-hidden="true"
+                >
+                  <label for="lise-guculu-yon-diger" class="mb-1 block text-xs text-slate-400">
+                    Güçlü yönünü kısaca yaz
+                  </label>
+                  <input
+                    type="text"
+                    id="lise-guculu-yon-diger"
+                    name="guculu_yon_diger_metin"
+                    class="field-select"
+                    placeholder="Örn: stratejik düşünme, empati..."
+                    autocomplete="off"
+                    disabled
+                  />
+                </div>
+              </fieldset>
+
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  İlgi odakları
+                </legend>
+                <p class="text-xs text-slate-400">
+                  Neler ilgini çeker? Neler kesinlikle ilgini çekmez?
+                </p>
+                <div class="space-y-3">
+                  <div>
+                    <label for="lise-ilgi-ceken" class="mb-1 block text-xs text-slate-400">İlgi çekenler</label>
+                    <textarea
+                      id="lise-ilgi-ceken"
+                      name="ilgi_ceken"
+                      required
+                      rows="3"
+                      placeholder="Örn: teknoloji, doğa, takım sporları..."
+                      class="field-textarea"
+                    ></textarea>
+                  </div>
+                  <div>
+                    <label for="lise-ilgi-cekmeyen" class="mb-1 block text-xs text-slate-400">İlgi çekmeyenler</label>
+                    <textarea
+                      id="lise-ilgi-cekmeyen"
+                      name="ilgi_cekmeyen"
+                      required
+                      rows="3"
+                      placeholder="Örn: uzun raporlar, sıkı kurallar..."
+                      class="field-textarea"
+                    ></textarea>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  Tutku &amp; hobi
+                </legend>
+                <p class="text-xs text-slate-400">
+                  Boş zamanlarında seni en çok ne mutlu eder?
+                </p>
+                <textarea
+                  name="tutku_hobi"
+                  required
+                  rows="3"
+                  class="field-textarea"
+                  placeholder="Kısaca yaz..."
+                ></textarea>
+              </fieldset>
+
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  Heyecan faktörü
+                </legend>
+                <p class="text-xs text-slate-400">
+                  Seni ne heyecanlandırır? (Yeni bir şey icat etmek, insanlara yardım
+                  etmek, yönetmek vb.)
+                </p>
+                <div class="grid gap-3 sm:grid-cols-2">
+                  <label class="radio-card rounded-xl border border-blue-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-blue-400/50 has-[:checked]:bg-blue-500/15">
+                    <input type="radio" name="heyecan_faktoru" value="icat_uretmek" required class="radio-input" />
+                    <span>Yeni bir şey icat / üretmek</span>
+                  </label>
+                  <label class="radio-card rounded-xl border border-blue-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-blue-400/50 has-[:checked]:bg-blue-500/15">
+                    <input type="radio" name="heyecan_faktoru" value="yardim_etmek" class="radio-input" />
+                    <span>İnsanlara yardım etmek</span>
+                  </label>
+                  <label class="radio-card rounded-xl border border-blue-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-blue-400/50 has-[:checked]:bg-blue-500/15">
+                    <input type="radio" name="heyecan_faktoru" value="yonetmek" class="radio-input" />
+                    <span>Yönetmek, liderlik</span>
+                  </label>
+                  <label class="radio-card rounded-xl border border-blue-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-blue-400/50 has-[:checked]:bg-blue-500/15">
+                    <input type="radio" name="heyecan_faktoru" value="kesfetmek" class="radio-input" />
+                    <span>Keşfetmek, öğrenmek</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <div class="pt-2">
+                <button type="submit" class="btn-rota btn-rota-blue">
+                  <span class="relative z-10 flex items-center justify-center gap-2">
+                    <svg class="h-5 w-5 opacity-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    Rotamı Oluştur
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- B. Üniversite formu (PRD: Kariyer Dönüşümü) -->
+        <section
+          id="form-universite"
+          class="hidden opacity-0 translate-y-8 transition-all duration-500 ease-out"
+          aria-hidden="true"
+        >
+          <div
+            class="mt-8 rounded-3xl border border-violet-400/25 bg-white/[0.06] p-6 shadow-2xl shadow-violet-950/40 backdrop-blur-xl sm:p-8"
+          >
+            <p
+              class="mb-6 border-b border-white/10 pb-4 text-sm font-semibold text-violet-200"
+            >
+              Üniversite öğrencisi — kariyer dönüşümü
+            </p>
+            <form id="uni-form" class="space-y-8">
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  Mevcut uzmanlık
+                </legend>
+                <p class="text-xs text-slate-400">
+                  Okuduğun bölüm / fakülte nedir?
+                </p>
+                <textarea
+                  name="mevcut_uzmanlik"
+                  required
+                  rows="2"
+                  class="field-textarea"
+                  placeholder="Örn: Bilgisayar Mühendisliği, İktisat..."
+                ></textarea>
+              </fieldset>
+
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  Güçlü yön analizi
+                </legend>
+                <p class="text-xs text-slate-400">
+                  Karakterinde ve becerilerinde en güçlü bulduğun yönün nedir?
+                  (Kriz yönetimi, detaycılık, liderlik, teknik çözümleme vb.)
+                  Birden fazla seçebilirsin.
+                </p>
+                <div class="grid gap-3 sm:grid-cols-2">
+                  <label class="radio-card rounded-xl border border-violet-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-violet-400/50 has-[:checked]:bg-violet-500/15">
+                    <input type="checkbox" name="uni_guculu_yon" value="kriz_yonetimi" class="radio-input" />
+                    <span>Kriz yönetimi</span>
+                  </label>
+                  <label class="radio-card rounded-xl border border-violet-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-violet-400/50 has-[:checked]:bg-violet-500/15">
+                    <input type="checkbox" name="uni_guculu_yon" value="detaycilik" class="radio-input" />
+                    <span>Detaycılık</span>
+                  </label>
+                  <label class="radio-card rounded-xl border border-violet-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-violet-400/50 has-[:checked]:bg-violet-500/15">
+                    <input type="checkbox" name="uni_guculu_yon" value="liderlik" class="radio-input" />
+                    <span>Liderlik</span>
+                  </label>
+                  <label class="radio-card rounded-xl border border-violet-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-violet-400/50 has-[:checked]:bg-violet-500/15">
+                    <input type="checkbox" name="uni_guculu_yon" value="teknik_cozumleme" class="radio-input" />
+                    <span>Teknik çözümleme</span>
+                  </label>
+                  <label class="radio-card rounded-xl border border-violet-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-violet-400/50 has-[:checked]:bg-violet-500/15 sm:col-span-2">
+                    <input type="checkbox" name="uni_guculu_yon" value="diger" class="radio-input" />
+                    <span>Diğer</span>
+                  </label>
+                </div>
+                <div
+                  id="uni-guculu-diger-wrap"
+                  class="guculu-diger-panel"
+                  aria-hidden="true"
+                >
+                  <label for="uni-guculu-yon-diger" class="mb-1 block text-xs text-slate-400">
+                    Güçlü yönünü kısaca yaz
+                  </label>
+                  <input
+                    type="text"
+                    id="uni-guculu-yon-diger"
+                    name="uni_guculu_yon_diger_metin"
+                    class="field-select field-select-violet"
+                    placeholder="Örn: müzakere, sistem kurma..."
+                    autocomplete="off"
+                    disabled
+                  />
+                </div>
+              </fieldset>
+
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  Çalışma tercihi
+                </legend>
+                <p class="text-xs text-slate-400">
+                  Hareketli bir &quot;Saha&quot; ortamı mı, odaklanmış bir &quot;Masa
+                  Başı&quot; düzeni mi?
+                </p>
+                <select name="calisma_tercihi" required class="field-select field-select-violet">
+                  <option value="">Tercih seçin</option>
+                  <option value="saha">Saha — hareketli ortam</option>
+                  <option value="masa_basi">Masa başı — odaklanmış düzen</option>
+                  <option value="karma">İkisinin karışımı</option>
+                </select>
+              </fieldset>
+
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  Sosyal ihtiyaç
+                </legend>
+                <p class="text-xs text-slate-400">
+                  İnsanlarla sürekli etkileşim mi, yoksa bireysel / teknik çalışma mı?
+                </p>
+                <div class="grid gap-3 sm:grid-cols-2">
+                  <label class="radio-card rounded-xl border border-violet-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-violet-400/50 has-[:checked]:bg-violet-500/15">
+                    <input type="radio" name="sosyal_ihtiyac" value="etkilesim" required class="radio-input" />
+                    <span>Sürekli etkileşim</span>
+                  </label>
+                  <label class="radio-card rounded-xl border border-violet-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-violet-400/50 has-[:checked]:bg-violet-500/15">
+                    <input type="radio" name="sosyal_ihtiyac" value="karma_dengeli" class="radio-input" />
+                    <span>Karma / Dengeli çalışma</span>
+                  </label>
+                  <label class="radio-card rounded-xl border border-violet-400/20 bg-white/[0.04] hover:bg-white/[0.07] has-[:checked]:border-violet-400/50 has-[:checked]:bg-violet-500/15">
+                    <input type="radio" name="sosyal_ihtiyac" value="bireysel_teknik" class="radio-input" />
+                    <span>Bireysel / teknik çalışma</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  Negatif filtre
+                </legend>
+                <p class="text-xs text-slate-400">
+                  Neleri yapmaktan kesinlikle hoşlanmazsın? (Rutin işler, aşırı
+                  stres, sürekli raporlama vb.)
+                </p>
+                <textarea
+                  name="negatif_filtre"
+                  required
+                  rows="3"
+                  class="field-textarea"
+                ></textarea>
+              </fieldset>
+
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  Tutku &amp; hobi
+                </legend>
+                <p class="text-xs text-slate-400">
+                  Boş zamanlarında seni en çok ne mutlu eder?
+                </p>
+                <textarea
+                  name="tutku_hobi"
+                  required
+                  rows="3"
+                  class="field-textarea"
+                  placeholder="Kısaca yaz..."
+                ></textarea>
+              </fieldset>
+
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  Motivasyon &amp; heyecan
+                </legend>
+                <p class="text-xs text-slate-400">
+                  Temel motivasyon kaynağın nedir? Seni ne heyecanlandırır?
+                </p>
+                <textarea
+                  name="motivasyon_heyecan"
+                  required
+                  rows="3"
+                  class="field-textarea"
+                ></textarea>
+              </fieldset>
+
+              <fieldset class="space-y-3">
+                <legend class="text-sm font-medium text-slate-200">
+                  Sektörel hedef
+                </legend>
+                <p class="text-xs text-slate-400">
+                  Özel sektörün dinamizmi mi, devlet kurumunun güvencesi mi?
+                </p>
+                <select name="sektorel_hedef" required class="field-select field-select-violet">
+                  <option value="">Hedef seçin</option>
+                  <option value="ozel_sektor">Özel sektör — dinamizm</option>
+                  <option value="devlet">Devlet kurumu — güvence</option>
+                  <option value="karma">Henüz net değil / ikisini düşünüyorum</option>
+                </select>
+              </fieldset>
+
+              <div class="pt-2">
+                <button type="submit" class="btn-rota btn-rota-violet">
+                  <span class="relative z-10 flex items-center justify-center gap-2">
+                    <svg class="h-5 w-5 opacity-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    Rotamı Oluştur
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Analiz yükleniyor -->
+        <div
+          id="analysis-loading"
+          class="mt-10 hidden text-center transition-opacity duration-300"
+          aria-live="polite"
+          aria-busy="false"
+        >
+          <div
+            class="mx-auto flex max-w-md flex-col items-center rounded-3xl border border-white/15 bg-white/[0.07] px-8 py-12 shadow-2xl backdrop-blur-xl"
+          >
+            <div
+              class="h-14 w-14 rounded-full border-2 border-blue-400/30 border-t-blue-400 animate-spin"
+              aria-hidden="true"
+            ></div>
+            <p class="mt-6 text-base font-medium leading-relaxed text-slate-100">
+              Pusulan ayarlanıyor, karakterin analiz ediliyor...
+            </p>
+            <p class="mt-2 text-xs text-slate-400">
+              Bu birkaç saniye sürebilir. Lütfen pencereyi kapatma.
+            </p>
+          </div>
+        </div>
+
+        <p
+          id="analysis-error"
+          class="mt-6 hidden rounded-2xl border border-red-400/40 bg-red-950/40 px-4 py-3 text-center text-sm text-red-200"
+          role="alert"
+        ></p>
+
+        <!-- Sonuç kartları -->
+        <section
+          id="results-section"
+          class="mt-10 hidden space-y-6"
+          aria-hidden="true"
+        >
+          <h2
+            class="text-center text-2xl font-bold tracking-tight text-white sm:text-3xl"
+          >
+            Rotan hazır
+          </h2>
+          <p class="text-center text-sm text-slate-400">
+            Aşağıda senin için özetlenen kariyer görünümün yer alıyor.
+          </p>
+
+          <article
+            class="rounded-2xl border border-blue-400/25 bg-gradient-to-br from-white/[0.08] to-transparent p-6 shadow-xl sm:p-8"
+          >
+            <h3
+              class="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-blue-200"
+            >
+              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/20 text-lg" aria-hidden="true">◆</span>
+              Karakter analizi
+            </h3>
+            <p
+              id="out-karakter"
+              class="mt-4 text-sm leading-relaxed text-slate-300 whitespace-pre-wrap"
+            ></p>
+          </article>
+
+          <article
+            class="rounded-2xl border border-violet-400/25 bg-gradient-to-br from-white/[0.08] to-transparent p-6 shadow-xl sm:p-8"
+          >
+            <h3
+              class="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-violet-200"
+            >
+              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-500/20 text-lg" aria-hidden="true">◎</span>
+              Önerilen 3 rota
+            </h3>
+            <div
+              id="out-rota-grid"
+              class="mt-4 grid gap-4 sm:grid-cols-3"
+            ></div>
+          </article>
+
+          <article
+            class="rounded-2xl border border-amber-400/30 bg-gradient-to-br from-amber-500/10 to-transparent p-6 shadow-xl sm:p-8"
+          >
+            <h3
+              class="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-amber-200"
+            >
+              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500/20 text-lg" aria-hidden="true">⚠</span>
+              Uzak dur uyarısı
+            </h3>
+            <p
+              id="out-uzak-dur"
+              class="mt-4 text-sm leading-relaxed text-slate-300 whitespace-pre-wrap"
+            ></p>
+          </article>
+
+          <article
+            class="rounded-2xl border border-emerald-400/25 bg-gradient-to-br from-emerald-500/10 to-transparent p-6 shadow-xl sm:p-8"
+          >
+            <h3
+              class="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-emerald-200"
+            >
+              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/20 text-lg" aria-hidden="true">◇</span>
+              Gelişim yol haritası
+            </h3>
+            <p
+              id="out-gelisim"
+              class="mt-4 text-sm leading-relaxed text-slate-300 whitespace-pre-wrap"
+            ></p>
+          </article>
+
+          <article
+            class="rounded-2xl border border-fuchsia-400/30 bg-gradient-to-br from-fuchsia-500/10 to-white/[0.05] p-6 shadow-xl sm:p-8"
+          >
+            <h3
+              class="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-fuchsia-200"
+            >
+              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-fuchsia-500/20 text-lg" aria-hidden="true">✦</span>
+              Samimi mentor notu
+            </h3>
+            <p
+              id="out-mentor"
+              class="mt-4 text-sm leading-relaxed text-slate-200 whitespace-pre-wrap"
+            ></p>
+          </article>
+
+          <div class="pt-4">
+            <button
+              type="button"
+              id="btn-reset-test"
+              class="btn-rota btn-rota-blue w-full sm:max-w-md sm:mx-auto"
+            >
+              <span class="relative z-10">Testi Yeniden Çöz</span>
+            </button>
+          </div>
+        </section>
+
+        <div
+          id="why-modal"
+          class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 px-4 py-8 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="why-modal-title"
+        >
+          <div
+            class="relative w-full max-w-2xl rounded-3xl border border-white/15 bg-slate-950/90 p-6 shadow-2xl sm:p-8"
+          >
+            <button
+              type="button"
+              id="btn-why-close"
+              class="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-slate-300 transition hover:border-blue-300/50 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+              aria-label="Kapat"
+            >
+              ✕
+            </button>
+            <h3 id="why-modal-title" class="text-xl font-bold tracking-tight text-white sm:text-2xl">
+              Neden TunaMentoora.ai?
+            </h3>
+            <ul class="mt-5 space-y-4">
+              <li class="rounded-2xl border border-blue-300/20 bg-blue-500/5 p-4">
+                <p class="text-sm font-semibold text-blue-200">Anlık AI Analizi</p>
+                <p class="mt-1 text-sm leading-relaxed text-slate-300">
+                  Gemini destekli analiz motoru, formu tamamladıktan hemen sonra verini yorumlar
+                  ve sana özel net bir rota çıkarır.
+                </p>
+              </li>
+              <li class="rounded-2xl border border-violet-300/20 bg-violet-500/5 p-4">
+                <p class="text-sm font-semibold text-violet-200">Kişisel Mentorluk</p>
+                <p class="mt-1 text-sm leading-relaxed text-slate-300">
+                  Sadece öneri listesi sunmaz; güçlü yönlerini, ilgi alanlarını ve motivasyonunu
+                  birlikte değerlendirip mentor diliyle rehberlik eder.
+                </p>
+              </li>
+              <li class="rounded-2xl border border-fuchsia-300/20 bg-fuchsia-500/5 p-4">
+                <p class="text-sm font-semibold text-fuchsia-200">Karakter Odaklı Rota</p>
+                <p class="mt-1 text-sm leading-relaxed text-slate-300">
+                  Akademik verinin ötesine geçer; karakter profiline uygun, sürdürülebilir ve seni
+                  gerçekten heyecanlandıran yönleri öne çıkarır.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <style>
+      .guculu-diger-panel {
+        max-height: 0;
+        opacity: 0;
+        margin-top: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transition:
+          max-height 0.35s ease,
+          opacity 0.28s ease,
+          margin-top 0.28s ease;
+      }
+      .guculu-diger-panel.is-open {
+        max-height: 8rem;
+        opacity: 1;
+        margin-top: 0.75rem;
+        pointer-events: auto;
+      }
+      .field-select,
+      .field-textarea {
+        width: 100%;
+        border-radius: 0.75rem;
+        border: 1px solid rgb(255 255 255 / 0.15);
+        background: rgb(2 6 23 / 0.5);
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: rgb(241 245 249);
+        box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.2);
+        transition:
+          border-color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .field-select::placeholder,
+      .field-textarea::placeholder {
+        color: rgb(100 116 139);
+      }
+      .field-select:focus,
+      .field-textarea:focus {
+        outline: none;
+      }
+      #lise-form .field-select:focus,
+      #lise-form .field-textarea:focus {
+        border-color: rgb(96 165 250 / 0.6);
+        box-shadow:
+          inset 0 1px 2px rgb(0 0 0 / 0.2),
+          0 0 0 2px rgb(96 165 250 / 0.3);
+      }
+      .field-select.field-select-violet:focus,
+      #uni-form .field-textarea:focus {
+        border-color: rgb(167 139 250 / 0.6);
+        box-shadow:
+          inset 0 1px 2px rgb(0 0 0 / 0.2),
+          0 0 0 2px rgb(167 139 250 / 0.3);
+      }
+      .field-textarea {
+        min-height: 5rem;
+        resize: vertical;
+      }
+      .radio-card {
+        display: flex;
+        cursor: pointer;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem;
+        text-align: left;
+        font-size: 0.875rem;
+        line-height: 1.4;
+        color: rgb(226 232 240);
+        transition: background 0.15s ease, border-color 0.15s ease;
+      }
+      .radio-input {
+        margin-top: 0.125rem;
+        height: 1rem;
+        width: 1rem;
+        flex-shrink: 0;
+        accent-color: rgb(59 130 246);
+      }
+      #form-universite .radio-input {
+        accent-color: rgb(139 92 246);
+      }
+      .btn-rota {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 1rem;
+        padding: 1rem 1.5rem;
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #fff;
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2);
+        transition:
+          transform 0.15s ease,
+          filter 0.15s ease;
+      }
+      .btn-rota:focus {
+        outline: none;
+      }
+      .btn-rota:focus-visible {
+        outline: 2px solid transparent;
+        box-shadow:
+          0 20px 25px -5px rgb(0 0 0 / 0.2),
+          0 0 0 2px rgb(15 23 42),
+          0 0 0 4px currentColor;
+      }
+      .btn-rota:active {
+        transform: scale(0.99);
+      }
+      .btn-rota-blue {
+        border: 1px solid rgb(147 197 253 / 0.3);
+        background: linear-gradient(
+          90deg,
+          rgb(59 130 246),
+          rgb(99 102 241),
+          rgb(124 58 237)
+        );
+        box-shadow: 0 20px 25px -5px rgb(30 58 138 / 0.5);
+      }
+      .btn-rota-blue:hover {
+        filter: brightness(1.08);
+      }
+      .btn-rota-blue:focus-visible {
+        color: rgb(147 197 253);
+      }
+      .btn-rota-violet {
+        border: 1px solid rgb(196 181 253 / 0.3);
+        background: linear-gradient(
+          90deg,
+          rgb(124 58 237),
+          rgb(192 38 211),
+          rgb(37 99 235)
+        );
+        box-shadow: 0 20px 25px -5px rgb(76 29 149 / 0.5);
+      }
+      .btn-rota-violet:hover {
+        filter: brightness(1.08);
+      }
+      .btn-rota-violet:focus-visible {
+        color: rgb(196 181 253);
+      }
+    </style>
+    <script>
+      (function () {
+        var GEMINI_API_KEY = 'AIzaSyAvQpQNbJFyWVhtEcnBduao4LkgwIRI2uo';
+        // İstenen sabit model ve endpoint.
+        var GEMINI_MODEL = 'gemini-1.5-flash';
+
+        var mainRoot = document.getElementById('main-root');
+        var appShell = document.getElementById('app-shell');
+        var entrySection = document.getElementById('entry-section');
+        var heroDesc = document.getElementById('hero-desc');
+        var formLise = document.getElementById('form-lise');
+        var formUni = document.getElementById('form-universite');
+        var btnLise = document.getElementById('btn-lise');
+        var btnUni = document.getElementById('btn-universite');
+        var analysisLoading = document.getElementById('analysis-loading');
+        var analysisError = document.getElementById('analysis-error');
+        var resultsSection = document.getElementById('results-section');
+        var btnResetTest = document.getElementById('btn-reset-test');
+        var whyModal = document.getElementById('why-modal');
+        var btnWhyOpen = document.getElementById('btn-why-open');
+        var btnWhyClose = document.getElementById('btn-why-close');
+
+        var liseForm = document.getElementById('lise-form');
+        var uniForm = document.getElementById('uni-form');
+
+        var heroDescDefault =
+          'Sana uygun kariyer rotasını keşfetmek için önce rolünü seç. Deneyimini kişiselleştireceğiz.';
+        var activeProfile = null;
+
+        function resetFormVisibility() {
+          [formLise, formUni].forEach(function (el) {
+            el.classList.add('hidden');
+            el.classList.add('opacity-0', 'translate-y-8', 'pointer-events-none');
+            el.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            el.setAttribute('aria-hidden', 'true');
+          });
+        }
+
+        function hideAnalysisUi() {
+          analysisLoading.classList.add('hidden');
+          analysisLoading.setAttribute('aria-busy', 'false');
+          analysisError.classList.add('hidden');
+          analysisError.textContent = '';
+          resultsSection.classList.add('hidden');
+          resultsSection.setAttribute('aria-hidden', 'true');
+        }
+
+        function showForm(which) {
+          hideAnalysisUi();
+          activeProfile = which;
+          resetFormVisibility();
+          var target = which === 'lise' ? formLise : formUni;
+
+          entrySection.classList.add(
+            'pointer-events-none',
+            'opacity-0',
+            '-translate-y-2',
+            'scale-[0.98]'
+          );
+
+          window.setTimeout(function () {
+            entrySection.classList.add('hidden');
+            mainRoot.classList.remove('justify-center');
+            mainRoot.classList.add('justify-start', 'py-10', 'sm:py-12');
+            appShell.classList.remove('max-w-md', 'sm:max-w-lg', 'max-w-3xl');
+            appShell.classList.add('max-w-2xl');
+
+            heroDesc.textContent =
+              which === 'lise'
+                ? 'Aşağıdaki sorularla geleceğine dair ipuçlarını paylaş; rotanı kişiselleştirelim.'
+                : 'Kariyer dönüşümü için yanıtlarını paylaş; sana uygun rotayı birlikte çizelim.';
+
+            target.classList.remove('hidden');
+            target.setAttribute('aria-hidden', 'false');
+            void target.offsetWidth;
+            target.classList.remove(
+              'opacity-0',
+              'translate-y-8',
+              'pointer-events-none'
+            );
+            target.classList.add(
+              'opacity-100',
+              'translate-y-0',
+              'pointer-events-auto'
+            );
+          }, 380);
+        }
+
+        btnLise.addEventListener('click', function () {
+          showForm('lise');
+        });
+        btnUni.addEventListener('click', function () {
+          showForm('universite');
+        });
+
+        function openWhyModal() {
+          whyModal.classList.remove('hidden');
+          whyModal.classList.add('flex');
+          document.body.classList.add('overflow-hidden');
+        }
+
+        function closeWhyModal() {
+          whyModal.classList.add('hidden');
+          whyModal.classList.remove('flex');
+          document.body.classList.remove('overflow-hidden');
+        }
+
+        btnWhyOpen.addEventListener('click', openWhyModal);
+        btnWhyClose.addEventListener('click', closeWhyModal);
+        whyModal.addEventListener('click', function (e) {
+          if (e.target === whyModal) {
+            closeWhyModal();
+          }
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !whyModal.classList.contains('hidden')) {
+            closeWhyModal();
+          }
+        });
+
+        function bindGuculuDigerPanel(form, inputName, wrap, textInput) {
+          function sync() {
+            var digerChecked = form.querySelector(
+              'input[name="' + inputName + '"][value="diger"]:checked'
+            );
+            var isDiger = Boolean(digerChecked);
+            if (isDiger) {
+              wrap.classList.add('is-open');
+              wrap.setAttribute('aria-hidden', 'false');
+              textInput.disabled = false;
+              textInput.required = true;
+            } else {
+              wrap.classList.remove('is-open');
+              wrap.setAttribute('aria-hidden', 'true');
+              textInput.disabled = true;
+              textInput.required = false;
+              textInput.value = '';
+            }
+          }
+          form.querySelectorAll('input[name="' + inputName + '"]').forEach(
+            function (r) {
+              r.addEventListener('change', sync);
+            }
+          );
+          sync();
+          return sync;
+        }
+
+        var syncLiseGuculuPanel = bindGuculuDigerPanel(
+          liseForm,
+          'guculu_yon',
+          document.getElementById('lise-guculu-diger-wrap'),
+          document.getElementById('lise-guculu-yon-diger')
+        );
+        var syncUniGuculuPanel = bindGuculuDigerPanel(
+          uniForm,
+          'uni_guculu_yon',
+          document.getElementById('uni-guculu-diger-wrap'),
+          document.getElementById('uni-guculu-yon-diger')
+        );
+
+        function getCheckedValues(form, inputName) {
+          return Array.prototype.slice
+            .call(form.querySelectorAll('input[name="' + inputName + '"]:checked'))
+            .map(function (el) {
+              return el.value;
+            });
+        }
+
+        function collectLisePayload() {
+          var fd = new FormData(liseForm);
+          var guculu = getCheckedValues(liseForm, 'guculu_yon');
+          if (!guculu.length) {
+            throw new Error('Lütfen en az bir güçlü yön seç.');
+          }
+          return {
+            profil_tipi: 'lise',
+            akademik_alan: fd.get('akademik_alan'),
+            guculu_yon: guculu,
+            guculu_yon_ozel_metin:
+              guculu.indexOf('diger') !== -1 ? fd.get('guculu_yon_diger_metin') : null,
+            ilgi_ceken: fd.get('ilgi_ceken'),
+            ilgi_cekmeyen: fd.get('ilgi_cekmeyen'),
+            tutku_hobi: fd.get('tutku_hobi'),
+            heyecan_faktoru: fd.get('heyecan_faktoru'),
+          };
+        }
+
+        function collectUniPayload() {
+          var fd = new FormData(uniForm);
+          var guculu = getCheckedValues(uniForm, 'uni_guculu_yon');
+          if (!guculu.length) {
+            throw new Error('Lütfen en az bir güçlü yön seç.');
+          }
+          return {
+            profil_tipi: 'universite',
+            mevcut_uzmanlik: fd.get('mevcut_uzmanlik'),
+            guculu_yon: guculu,
+            guculu_yon_ozel_metin:
+              guculu.indexOf('diger') !== -1
+                ? fd.get('uni_guculu_yon_diger_metin')
+                : null,
+            calisma_tercihi: fd.get('calisma_tercihi'),
+            sosyal_ihtiyac: fd.get('sosyal_ihtiyac'),
+            negatif_filtre: fd.get('negatif_filtre'),
+            tutku_hobi: fd.get('tutku_hobi'),
+            motivasyon_heyecan: fd.get('motivasyon_heyecan'),
+            sektorel_hedef: fd.get('sektorel_hedef'),
+          };
+        }
+
+        function buildSystemPrompt() {
+          return [
+            'Sen TunaMentoora.ai adlı yapay zeka destekli kariyer rehberlik uygulamasının "Dijital Mentor" karakterisin.',
+            'Görevin: Kullanıcının formda verdiği JSON verisini bütünsel olarak okuyarak Türkçe, empatik, güven veren ve uygulanabilir bir rehberlik özeti üretmek.',
+            '',
+            'ÇIKTI MİMARİSİ (PRD ile birebir aynı anlamlar):',
+            '1) Karakter Analizi — Girdilere dayalı derinlemesine "Karakter Portresi".',
+            '2) Önerilen 3 Rota — Karakter, güç alanları ve (üniversite profilinde) uzmanlıkla uyumlu tam 3 modern meslek veya pozisyon.',
+            '3) "Uzak Dur" Uyarısı — Kullanıcının sevmediği, çekinmediği veya negatif filtre olarak yazdıklarına göre kaçınması gereken alan/iş türleri.',
+            '4) Gelişim Yol Haritası — Önerilen rotalar için geliştirilmesi gereken kritik yetkinlikler (soft skills ve hard skills); net ve madde mantığında.',
+            '5) Samimi Mentor Notu — Kişiye özel, samimi, teşvik edici, umut veren ve vizyon katan kapanış.',
+            '',
+            'KATı KURALLAR:',
+            '- Yanıtın SADECE geçerli bir JSON nesnesi olmalı; markdown kod çitleri, ön/arka ek metin veya açıklama yok.',
+            '- Tüm metin alanları Türkçe olacak.',
+            '- Kullanıcıdan gelen içeriği temel al; abartılı veya dayanaksız iddia üretme.',
+            '- "Uzak Dur" bölümünde lise profilindeki "ilgi çekmeyenler" ve üniversite profilindeki "negatif_filtreyi" özellikle dikkate al.',
+            '',
+            'JSON şeması (anahtarlar tam olarak bu olmalı):',
+            '{',
+            '  "karakter_analizi": "string",',
+            '  "onerilen_3_rota": [',
+            '    { "baslik": "string", "ozet": "string" },',
+            '    { "baslik": "string", "ozet": "string" },',
+            '    { "baslik": "string", "ozet": "string" }',
+            '  ],',
+            '  "uzak_dur_uyarisi": "string",',
+            '  "gelisim_yol_haritasi": "string",',
+            '  "samimi_mentor_notu": "string"',
+            '}',
+            'Cevabını mutlaka geçerli bir JSON formatında ver.',
+          ].join('\n');
+        }
+
+        function parseGeminiJson(raw) {
+          var t = (raw || '').trim();
+          if (!t) throw new Error('Boş yanıt');
+          if (t.indexOf('```') === 0) {
+            t = t.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '');
+          }
+          // Basit kontrol: Yanıt JSON objesi gibi başlamıyor ise daha net hata ver.
+          if (!t || t[0] !== '{') {
+            var preview = t.slice(0, 200);
+            throw new Error('Model yanıtı JSON değil. Başlangıç: ' + preview);
+          }
+          try {
+            return JSON.parse(t);
+          } catch (e) {
+            var p = t.slice(0, 200);
+            throw new Error('Model yanıtı JSON parse edilemedi. Başlangıç: ' + p);
+          }
+        }
+
+        function renderResults(data) {
+          document.getElementById('out-karakter').textContent =
+            data.karakter_analizi || '—';
+          document.getElementById('out-uzak-dur').textContent =
+            data.uzak_dur_uyarisi || '—';
+          document.getElementById('out-gelisim').textContent =
+            data.gelisim_yol_haritasi || '—';
+          document.getElementById('out-mentor').textContent =
+            data.samimi_mentor_notu || '—';
+
+          var grid = document.getElementById('out-rota-grid');
+          grid.innerHTML = '';
+          var rotalar = data.onerilen_3_rota;
+          if (!Array.isArray(rotalar)) rotalar = [];
+          while (rotalar.length < 3) {
+            rotalar.push({ baslik: '—', ozet: '' });
+          }
+          rotalar.slice(0, 3).forEach(function (r, idx) {
+            var card = document.createElement('div');
+            card.className =
+              'rounded-xl border border-violet-400/20 bg-slate-950/40 p-4 text-left shadow-lg';
+            var t = document.createElement('p');
+            t.className = 'text-xs font-semibold uppercase tracking-wide text-violet-300/90';
+            t.textContent = 'Rota ' + (idx + 1);
+            var h = document.createElement('h4');
+            h.className = 'mt-2 text-base font-bold text-white';
+            h.textContent = (r && r.baslik) || '—';
+            var p = document.createElement('p');
+            p.className = 'mt-2 text-sm leading-relaxed text-slate-400';
+            p.textContent = (r && r.ozet) || '';
+            card.appendChild(t);
+            card.appendChild(h);
+            card.appendChild(p);
+            grid.appendChild(card);
+          });
+        }
+
+        function hideFormSections() {
+          [formLise, formUni].forEach(function (el) {
+            el.classList.add(
+              'pointer-events-none',
+              'opacity-0',
+              'translate-y-4',
+              'hidden'
+            );
+            el.classList.remove('opacity-100', 'translate-y-0');
+            el.setAttribute('aria-hidden', 'true');
+          });
+        }
+
+        var resolvedModelName = null;
+
+        async function listAvailableModels() {
+          var listUrl =
+            'https://generativelanguage.googleapis.com/v1beta/models?key=' +
+            encodeURIComponent(GEMINI_API_KEY);
+          var res = await fetch(listUrl, { method: 'GET' });
+          var json = await res.json().catch(function () {
+            return {};
+          });
+          if (!res.ok) {
+            var msg =
+              (json.error && json.error.message) ||
+              'Model listesi alınamadı (' + res.status + ').';
+            throw new Error(msg);
+          }
+          var models = Array.isArray(json.models) ? json.models : [];
+          var names = models
+            .map(function (m) {
+              return m && m.name ? m.name.replace(/^models\//, '') : '';
+            })
+            .filter(Boolean);
+          console.log('[TunaMentoora.ai] API erisimli modeller:', names);
+          return models;
+        }
+
+        function pickBestModel(models) {
+          var cleaned = (models || []).map(function (m) {
+            return {
+              name: (m && m.name ? m.name : '').replace(/^models\//, ''),
+              methods: Array.isArray(m && m.supportedGenerationMethods)
+                ? m.supportedGenerationMethods
+                : [],
+            };
+          });
+
+          var generateModels = cleaned.filter(function (m) {
+            return m.name && m.methods.indexOf('generateContent') !== -1;
+          });
+
+          var preferred = generateModels.find(function (m) {
+            return m.name === 'gemini-1.5-flash';
+          });
+          if (preferred) return preferred.name;
+
+          // İstenen model yoksa listedeki ilk uygun modeli seç.
+          return generateModels.length ? generateModels[0].name : null;
+        }
+
+        async function ensureResolvedModel() {
+          if (resolvedModelName) return resolvedModelName;
+          var models = await listAvailableModels();
+          var picked = pickBestModel(models);
+          if (!picked) {
+            throw new Error(
+              'Hesabinda generateContent destekleyen model bulunamadi.'
+            );
+          }
+          resolvedModelName = picked;
+          console.log('[TunaMentoora.ai] Secilen model:', resolvedModelName);
+          return resolvedModelName;
+        }
+
+        async function callGemini(userJsonText) {
+          var modelName = await ensureResolvedModel();
+          var url =
+            'https://generativelanguage.googleapis.com/v1beta/models/' +
+            encodeURIComponent(modelName) +
+            ':generateContent?key=' +
+            encodeURIComponent(GEMINI_API_KEY);
+
+          var combinedPrompt =
+            buildSystemPrompt() +
+            '\n\n---\nKULLANICI PROFILI (JSON):\n' +
+            userJsonText +
+            '\n---\nYalnizca istenen JSON nesnesini dondur.';
+
+          var body = {
+            contents: [
+              {
+                role: 'user',
+                parts: [
+                  {
+                    text: combinedPrompt,
+                  },
+                ],
+              },
+            ],
+            generationConfig: {
+              temperature: 0.65,
+            },
+          };
+
+          var res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+          });
+
+          var json = await res.json().catch(function () {
+            return {};
+          });
+
+          if (!res.ok) {
+            var msg =
+              (json.error && json.error.message) ||
+              'API isteği başarısız oldu (' + res.status + ').';
+            throw new Error(msg);
+          }
+
+          if (json.promptFeedback && json.promptFeedback.blockReason) {
+            throw new Error(
+              'İstek güvenlik nedeniyle engellendi. Metinlerini yumuşatıp tekrar dene.'
+            );
+          }
+
+          var cand = json.candidates && json.candidates[0];
+          if (!cand) {
+            throw new Error(
+              'Model yanıtı döndürmedi. API anahtarını ve kotayı kontrol et.'
+            );
+          }
+          if (cand.finishReason && cand.finishReason !== 'STOP') {
+            throw new Error(
+              'Model yanıtı tamamlanamadı (' + cand.finishReason + '). Tekrar dene.'
+            );
+          }
+          var parts = cand.content && cand.content.parts;
+          var text = parts && parts[0] && parts[0].text;
+          if (!text) {
+            throw new Error('Model yanıtı okunamadı.');
+          }
+          return parseGeminiJson(text);
+        }
+
+        function showLoadingState() {
+          analysisError.classList.add('hidden');
+          analysisError.textContent = '';
+          analysisLoading.classList.remove('hidden');
+          analysisLoading.setAttribute('aria-busy', 'true');
+          heroDesc.textContent =
+            'Pusulan ayarlanıyor, karakterin analiz ediliyor...';
+          appShell.classList.remove('max-w-md', 'sm:max-w-lg', 'max-w-2xl');
+          appShell.classList.add('max-w-3xl');
+        }
+
+        function showFatalError(msg) {
+          analysisLoading.classList.add('hidden');
+          analysisLoading.setAttribute('aria-busy', 'false');
+          analysisError.textContent = msg;
+          analysisError.classList.remove('hidden');
+          heroDesc.textContent =
+            'Bir sorun oluştu. Aşağıdaki mesajı kontrol edip tekrar deneyebilirsin.';
+        }
+
+        async function handleFormSubmit(formEl, collector) {
+          if (
+            !GEMINI_API_KEY ||
+            GEMINI_API_KEY === 'YOUR_API_KEY_HERE' ||
+            GEMINI_API_KEY === 'BOS_SIFRE'
+          ) {
+            showFatalError(
+              'Lütfen dosyadaki GEMINI_API_KEY değişkenine geçerli bir Google AI API anahtarı yapıştır.'
+            );
+            return;
+          }
+
+          var payload = collector();
+          var userJsonText = JSON.stringify(payload, null, 2);
+
+          hideFormSections();
+          showLoadingState();
+
+          try {
+            var data = await callGemini(userJsonText);
+            renderResults(data);
+            analysisLoading.classList.add('hidden');
+            analysisLoading.setAttribute('aria-busy', 'false');
+            resultsSection.classList.remove('hidden');
+            resultsSection.setAttribute('aria-hidden', 'false');
+            heroDesc.textContent =
+              'Harika — rehberliğin aşağıda. İstersen yeniden test edebilirsin.';
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } catch (err) {
+            showFatalError(err.message || String(err));
+            if (activeProfile === 'lise') {
+              formLise.classList.remove('hidden', 'pointer-events-none');
+              formLise.classList.add('opacity-100', 'translate-y-0');
+              formLise.classList.remove('opacity-0', 'translate-y-4');
+              formLise.setAttribute('aria-hidden', 'false');
+            } else if (activeProfile === 'universite') {
+              formUni.classList.remove('hidden', 'pointer-events-none');
+              formUni.classList.add('opacity-100', 'translate-y-0');
+              formUni.classList.remove('opacity-0', 'translate-y-4');
+              formUni.setAttribute('aria-hidden', 'false');
+            }
+            heroDesc.textContent =
+              activeProfile === 'lise'
+                ? 'Aşağıdaki sorularla geleceğine dair ipuçlarını paylaş; rotanı kişiselleştirelim.'
+                : 'Kariyer dönüşümü için yanıtlarını paylaş; sana uygun rotayı birlikte çizelim.';
+            appShell.classList.remove('max-w-3xl');
+            appShell.classList.add('max-w-2xl');
+          }
+        }
+
+        liseForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          handleFormSubmit(liseForm, collectLisePayload);
+        });
+        uniForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          handleFormSubmit(uniForm, collectUniPayload);
+        });
+
+        btnResetTest.addEventListener('click', function () {
+          hideAnalysisUi();
+          liseForm.reset();
+          uniForm.reset();
+          syncLiseGuculuPanel();
+          syncUniGuculuPanel();
+
+          activeProfile = null;
+          entrySection.classList.remove(
+            'hidden',
+            'pointer-events-none',
+            'opacity-0',
+            '-translate-y-2',
+            'scale-[0.98]'
+          );
+          entrySection.classList.add('opacity-100');
+          resetFormVisibility();
+
+          mainRoot.classList.remove('justify-start', 'py-10', 'sm:py-12');
+          mainRoot.classList.add('justify-center', 'py-12');
+          appShell.classList.remove('max-w-2xl', 'max-w-3xl');
+          appShell.classList.add('max-w-md', 'sm:max-w-lg');
+          heroDesc.textContent = heroDescDefault;
+
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      })();
+    </script>
+  </body>
+</html>
