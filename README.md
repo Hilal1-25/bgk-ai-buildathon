@@ -19,4 +19,4 @@
 ​⚙️ Nasıl Çalıştırılır?  
 ​Bu repoyu bilgisayarınıza klonlayın.
 ​features/index.html dosyasını herhangi bir modern tarayıcıda (Chrome, Edge vb.) açın.
-​Uygulamanın çalışması için Google AI Studio'dan aldığınız geçerli bir API anahtarını kod içerisindeki ilgili alana eklediğinizden emin olun
+​Uygulamanın çalışması için Google AI Studio'dan aldığınız geçerli bir API anahtarını kod içerisindeki ilgili alana eklediğinizden emin olun (index.html dosyasındaki API Key'i GitHub güvenlik nedeniyle iptal etmiş olabilir. GEMINI_API_KEY kısmına kendi API Key'inizi ekleyin)
